@@ -182,15 +182,15 @@ class SubscriptionGuard {
       return GuardResult(
         GuardDecision.revoked,
         accessEndsAt: endsAt,
-        message: 'Your subscription has expired and access has ended. '
-            'Renew to continue.',
+        message: 'No active subscription was found, so access has ended. '
+            'Subscribe or renew to continue.',
       );
     }
     return GuardResult(
       GuardDecision.grace,
       accessEndsAt: endsAt,
-      message: 'Your subscription has expired. Access will cease within '
-          '${config.expiredGrace.inHours} hours unless renewed.',
+      message: 'No active subscription was found. Access will cease within '
+          '${config.expiredGrace.inHours} hours unless you subscribe or renew.',
     );
   }
 }
