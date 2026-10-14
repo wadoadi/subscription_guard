@@ -149,7 +149,8 @@ void main() {
       await guard.evaluate();
       expect((await guard.evaluate()).decision, GuardDecision.allowed);
 
-      now = now.add(const Duration(days: 1));
+      // Valid token is trusted for 7 days, so move past the recheck window.
+      now = now.add(const Duration(days: 8));
       final after = await guard.evaluate();
       expect(after.decision, GuardDecision.allowedWithWarning);
       expect(after.message, contains('access will shortly be revoked'));
